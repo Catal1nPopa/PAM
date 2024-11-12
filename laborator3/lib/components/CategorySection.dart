@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:laborator2/components/CardFilter.dart';
+import 'package:laborator2/controllers/wines.dart';
 import '../components/CustomButton.dart';
-import '../components/CardFilter.dart';
 
 class CategorySection extends StatelessWidget {
   final String selectedCategory;
-  final Map<String, List<Map<String, dynamic>>> dataMap;
+  // final Map<String, List<Map<String, dynamic>>> dataMap;
+  final List<Wine> dataMap;
   final Function(String) updateCategory;
 
   const CategorySection({
@@ -56,13 +58,13 @@ class CategorySection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-          SizedBox(
-            height: 180,
-            child: Cardfilter(
-              selectedCategory: selectedCategory,
-              dataMap: dataMap,
-            ),
-          ),
+          // SizedBox(
+          //   height: 180,
+          //   child: Cardfilter(
+          //     selectedCategory: selectedCategory,
+          //     dataMap: dataMap,
+          //   ),
+          // ),
         ],
       ),
     );
