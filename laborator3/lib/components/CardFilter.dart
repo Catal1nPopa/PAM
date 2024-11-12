@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class Cardfilter extends StatelessWidget {
   final String selectedCategory;
   final Map<String, List<Map<String, dynamic>>> dataMap;
-
+final Function(String) onItemSelected;
   const Cardfilter({
     Key? key,
     required this.selectedCategory,
     required this.dataMap,
+     required this.onItemSelected,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,9 @@ class Cardfilter extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: data.map((item) {
-          return Container(
+          return InkWell(
+            onTap: () => onItemSelected(item['denumire']),
+            child: Container(
             width: 150,
             margin: const EdgeInsets.only(right: 15),
             decoration: BoxDecoration(
@@ -79,6 +82,7 @@ class Cardfilter extends StatelessWidget {
                 ),
               ],
             ),
+            )
           );
         }).toList(),
       ),

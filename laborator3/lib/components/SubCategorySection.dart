@@ -4,9 +4,10 @@ import '../controllers/wines_controller.dart';
 import '../controllers/wines.dart';
 
 class SubCategorySection extends StatefulWidget {
+  final String selectedSubCategory;
   final String selectedCategory;
 
-  const SubCategorySection({Key? key, required this.selectedCategory})
+  const SubCategorySection({Key? key, required this.selectedSubCategory, required this.selectedCategory})
       : super(key: key);
 
   @override
@@ -14,13 +15,31 @@ class SubCategorySection extends StatefulWidget {
 }
 
 class _SubCategorySectionState extends State<SubCategorySection> {
-  late String selectedCategory;
+  late String selectedSubCategory;
+late String selectedCategory;
 
   @override
   void initState() {
     super.initState();
-    selectedCategory = widget.selectedCategory; // Initialize selectedCategory
+    selectedSubCategory = widget.selectedSubCategory; // Initialize selectedSubCategory
+selectedCategory = widget.selectedCategory;
   }
+
+  @override
+void didUpdateWidget(covariant SubCategorySection oldWidget) {
+  super.didUpdateWidget(oldWidget);
+  if (oldWidget.selectedSubCategory != widget.selectedSubCategory) {
+    setState(() {
+      selectedSubCategory = widget.selectedSubCategory;
+    });
+  }
+  if (oldWidget.selectedCategory != widget.selectedCategory) {
+    setState(() {
+      selectedCategory = widget.selectedCategory;
+    });
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +51,22 @@ class _SubCategorySectionState extends State<SubCategorySection> {
       }
 
       // Filter wines based on selected category
-      List<Wine> filteredWines = selectedCategory.isEmpty
-          ? wineController.wines // Show all wines if no category selected
-          : wineController.wines
-              .where((wine) =>
-                  wine.type.toLowerCase() == selectedCategory.toLowerCase())
-              .toList();
+     List<Wine> filteredWines = selectedCategory.isEmpty
+  ? wineController.wines // Show all wines if no category is selected
+  : wineController.wines.where((wine) {
+      if (selectedCategory.toLowerCase() == 'type') {
+        print("Filtering by type: $selectedSubCategory");
+        return wine.type.toLowerCase() == selectedSubCategory.toLowerCase();
+      } else if (selectedCategory.toLowerCase() == 'countries') {
+        print("Filtering by country: $selectedSubCategory");
+        return wine.country.toLowerCase() == selectedSubCategory.toLowerCase();
+      } else {
+        print("No matching category");
+      }
+      return false;
+  }).toList();
+
+
 
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +83,7 @@ class _SubCategorySectionState extends State<SubCategorySection> {
                 onPressed: () {
                   // Reset the selectedCategory to empty to show all wines
                   setState(() {
-                    selectedCategory = '';
+                    selectedSubCategory = '';
                   });
                 },
                 child: const Text(
@@ -68,7 +97,7 @@ class _SubCategorySectionState extends State<SubCategorySection> {
             ],
           ),
 
-          // GridView for filtered wines
+          // ListView for filtered wines
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

@@ -15,8 +15,8 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
-  String selectedCategory = 'white';
-
+  String selectedCategory = 'Type';
+String selectedSubCategory = 'red';
   @override
   void initState() {
     super.initState();
@@ -24,20 +24,22 @@ class _ShopPageState extends State<ShopPage> {
   }
 
 void updateCategory(String newCategory) {
+   print("Valoarea category primita in ShopPage: $newCategory");
     setState(() {
       selectedCategory = newCategory;
+    });
+  }
+
+  void onItemSelected(String denumire) {
+    print("Valoarea denumire primită în ShopPage: $denumire");
+    setState(() {
+      selectedSubCategory = denumire; // Actualizează subcategoria cu `denumire`
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final WineController wineController = Get.find<WineController>();
-    List<Wine> filteredWines = selectedCategory.isEmpty
-          ? wineController.wines // Show all wines if no category selected
-          : wineController.wines
-              .where((wine) =>
-                  wine.type.toLowerCase() == selectedCategory.toLowerCase())
-              .toList();
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 70, left: 20, right: 20, bottom: 20),
@@ -50,11 +52,13 @@ void updateCategory(String newCategory) {
             const SizedBox(height: 20),
             CategorySection(
               selectedCategory: selectedCategory,
-              dataMap: filteredWines,
+              dataMap: wineController.wines,
               updateCategory: updateCategory,
+              onItemSelected: onItemSelected,
             ),
             SubCategorySection(
-              selectedCategory: selectedCategory,
+              selectedSubCategory: selectedSubCategory,
+              selectedCategory: selectedCategory
             ),
           ],
         ),
