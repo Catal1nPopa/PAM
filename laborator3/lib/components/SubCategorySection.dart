@@ -7,7 +7,10 @@ class SubCategorySection extends StatefulWidget {
   final String selectedSubCategory;
   final String selectedCategory;
 
-  const SubCategorySection({Key? key, required this.selectedSubCategory, required this.selectedCategory})
+  const SubCategorySection(
+      {Key? key,
+      required this.selectedSubCategory,
+      required this.selectedCategory})
       : super(key: key);
 
   @override
@@ -16,30 +19,30 @@ class SubCategorySection extends StatefulWidget {
 
 class _SubCategorySectionState extends State<SubCategorySection> {
   late String selectedSubCategory;
-late String selectedCategory;
+  late String selectedCategory;
 
   @override
   void initState() {
     super.initState();
-    selectedSubCategory = widget.selectedSubCategory; // Initialize selectedSubCategory
-selectedCategory = widget.selectedCategory;
+    selectedSubCategory =
+        widget.selectedSubCategory; // Initialize selectedSubCategory
+    selectedCategory = widget.selectedCategory;
   }
 
   @override
-void didUpdateWidget(covariant SubCategorySection oldWidget) {
-  super.didUpdateWidget(oldWidget);
-  if (oldWidget.selectedSubCategory != widget.selectedSubCategory) {
-    setState(() {
-      selectedSubCategory = widget.selectedSubCategory;
-    });
+  void didUpdateWidget(covariant SubCategorySection oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedSubCategory != widget.selectedSubCategory) {
+      setState(() {
+        selectedSubCategory = widget.selectedSubCategory;
+      });
+    }
+    if (oldWidget.selectedCategory != widget.selectedCategory) {
+      setState(() {
+        selectedCategory = widget.selectedCategory;
+      });
+    }
   }
-  if (oldWidget.selectedCategory != widget.selectedCategory) {
-    setState(() {
-      selectedCategory = widget.selectedCategory;
-    });
-  }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -51,22 +54,22 @@ void didUpdateWidget(covariant SubCategorySection oldWidget) {
       }
 
       // Filter wines based on selected category
-     List<Wine> filteredWines = selectedCategory.isEmpty
-  ? wineController.wines // Show all wines if no category is selected
-  : wineController.wines.where((wine) {
-      if (selectedCategory.toLowerCase() == 'type') {
-        print("Filtering by type: $selectedSubCategory");
-        return wine.type.toLowerCase() == selectedSubCategory.toLowerCase();
-      } else if (selectedCategory.toLowerCase() == 'countries') {
-        print("Filtering by country: $selectedSubCategory");
-        return wine.country.toLowerCase() == selectedSubCategory.toLowerCase();
-      } else {
-        print("No matching category");
-      }
-      return false;
-  }).toList();
-
-
+      List<Wine> filteredWines = selectedCategory.isEmpty
+          ? wineController.wines
+          : wineController.wines.where((wine) {
+              if (selectedCategory.toLowerCase() == 'type') {
+                print("Filtering by type: $selectedSubCategory");
+                return wine.type.toLowerCase() ==
+                    selectedSubCategory.toLowerCase();
+              } else if (selectedCategory.toLowerCase() == 'countries') {
+                print("Filtering by country: $selectedSubCategory");
+                return wine.country.toLowerCase() ==
+                    selectedSubCategory.toLowerCase();
+              } else {
+                print("No matching category");
+              }
+              return false;
+            }).toList();
 
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,6 +87,7 @@ void didUpdateWidget(covariant SubCategorySection oldWidget) {
                   // Reset the selectedCategory to empty to show all wines
                   setState(() {
                     selectedSubCategory = '';
+                    selectedCategory = '';
                   });
                 },
                 child: const Text(
@@ -136,7 +140,8 @@ void didUpdateWidget(covariant SubCategorySection oldWidget) {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 8, vertical: 4),
                                 decoration: BoxDecoration(
-                                  color: const Color.fromARGB(255, 195, 228, 160),
+                                  color:
+                                      const Color.fromARGB(255, 195, 228, 160),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: const Text(
@@ -197,7 +202,8 @@ void didUpdateWidget(covariant SubCategorySection oldWidget) {
                           onPressed: () {
                             // Handle adding to favorites
                           },
-                          icon: const Icon(Icons.favorite_border_outlined, size: 16),
+                          icon: const Icon(Icons.favorite_border_outlined,
+                              size: 16),
                           label: const Text('Favourite'),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
@@ -213,7 +219,8 @@ void didUpdateWidget(covariant SubCategorySection oldWidget) {
                             ),
                             Text(
                               'Bottle (${wine.bottleSize} ml)',
-                              style: const TextStyle(fontSize: 10, color: Colors.grey),
+                              style: const TextStyle(
+                                  fontSize: 10, color: Colors.grey),
                             ),
                           ],
                         ),
