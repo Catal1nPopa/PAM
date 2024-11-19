@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:laborator2/CleanArchitecture/Application/Controllers/wine_controller.dart';
+import 'package:laborator2/CleanArchitecture/Presentation/Controller/wine_controller.dart';
 import 'package:laborator2/CleanArchitecture/Domain/Entities/carousel_entity.dart';
 
 class SubCategorySection extends StatefulWidget {
@@ -72,7 +72,6 @@ class _SubCategorySectionState extends State<SubCategorySection> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header Row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -97,7 +96,6 @@ class _SubCategorySectionState extends State<SubCategorySection> {
               ),
             ],
           ),
-
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

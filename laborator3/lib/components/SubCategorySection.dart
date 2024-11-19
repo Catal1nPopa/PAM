@@ -24,8 +24,7 @@ class _SubCategorySectionState extends State<SubCategorySection> {
   @override
   void initState() {
     super.initState();
-    selectedSubCategory =
-        widget.selectedSubCategory; // Initialize selectedSubCategory
+    selectedSubCategory = widget.selectedSubCategory;
     selectedCategory = widget.selectedCategory;
   }
 
@@ -53,7 +52,6 @@ class _SubCategorySectionState extends State<SubCategorySection> {
         return Center(child: CircularProgressIndicator());
       }
 
-      // Filter wines based on selected category
       List<Wine> filteredWines = selectedCategory.isEmpty
           ? wineController.wines
           : wineController.wines.where((wine) {
@@ -84,7 +82,6 @@ class _SubCategorySectionState extends State<SubCategorySection> {
               ),
               TextButton(
                 onPressed: () {
-                  // Reset the selectedCategory to empty to show all wines
                   setState(() {
                     selectedSubCategory = '';
                     selectedCategory = '';
@@ -101,7 +98,6 @@ class _SubCategorySectionState extends State<SubCategorySection> {
             ],
           ),
 
-          // ListView for filtered wines
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -135,7 +131,6 @@ class _SubCategorySectionState extends State<SubCategorySection> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // Available Badge
                               Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 8, vertical: 4),
@@ -154,7 +149,6 @@ class _SubCategorySectionState extends State<SubCategorySection> {
                                 ),
                               ),
                               const SizedBox(height: 5),
-                              // Wine Name
                               Text(
                                 wine.name,
                                 style: const TextStyle(
@@ -165,7 +159,6 @@ class _SubCategorySectionState extends State<SubCategorySection> {
                                 overflow: TextOverflow.visible,
                               ),
                               const SizedBox(height: 5),
-                              // Wine Type
                               Row(
                                 children: [
                                   const Icon(Icons.wine_bar, size: 16),
@@ -177,7 +170,6 @@ class _SubCategorySectionState extends State<SubCategorySection> {
                                 ],
                               ),
                               const SizedBox(height: 5),
-                              // Wine Country
                               Row(
                                 children: [
                                   const Icon(Icons.flag, size: 16),
@@ -194,14 +186,11 @@ class _SubCategorySectionState extends State<SubCategorySection> {
                       ],
                     ),
                     const SizedBox(height: 10),
-                    // Price, Bottle Capacity, and Critics Scores
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ElevatedButton.icon(
-                          onPressed: () {
-                            // Handle adding to favorites
-                          },
+                          onPressed: () {},
                           icon: const Icon(Icons.favorite_border_outlined,
                               size: 16),
                           label: const Text('Favourite'),
@@ -213,7 +202,7 @@ class _SubCategorySectionState extends State<SubCategorySection> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
-                              '₹ ${wine.priceUsd}', // Assuming the price is in USD
+                              '₹ ${wine.priceUsd}',
                               style: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),

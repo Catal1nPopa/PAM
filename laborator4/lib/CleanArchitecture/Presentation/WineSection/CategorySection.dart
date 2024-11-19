@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laborator2/CleanArchitecture/Domain/Entities/carousel_entity.dart';
 import 'package:laborator2/CleanArchitecture/Domain/Entities/wines_entity.dart';
-import 'package:laborator2/CleanArchitecture/Presentation/CardFilter.dart';
-import 'package:laborator2/CleanArchitecture/Presentation/CustomButton.dart';
-import 'package:laborator2/controllers/wines.dart';
+import 'package:laborator2/CleanArchitecture/Presentation/WineSection/CardFilter.dart';
+import 'package:laborator2/CleanArchitecture/Presentation/WineSection/CustomButton.dart';
 
 class CategorySection extends StatelessWidget {
   final String selectedCategory;

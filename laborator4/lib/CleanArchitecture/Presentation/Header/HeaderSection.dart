@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'address.dart';
+import 'package:laborator2/CleanArchitecture/Presentation/Header/Address.dart';
 import 'NotificationButton.dart';
 
 class HeaderSection extends StatelessWidget {

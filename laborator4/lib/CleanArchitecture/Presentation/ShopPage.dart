@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:laborator2/CleanArchitecture/Application/Controllers/wine_controller.dart';
-import 'package:laborator2/CleanArchitecture/Presentation/CategorySection.dart';
-import 'package:laborator2/CleanArchitecture/Presentation/HeaderSection.dart';
+import 'package:laborator2/CleanArchitecture/Presentation/Controller/wine_controller.dart';
+import 'package:laborator2/CleanArchitecture/Presentation/WineSection/CategorySection.dart';
+import 'package:laborator2/CleanArchitecture/Presentation/Header/HeaderSection.dart';
 import 'package:laborator2/CleanArchitecture/Presentation/SearchField.dart';
-import 'package:laborator2/CleanArchitecture/Presentation/SubCategorySection.dart';
+import 'package:laborator2/CleanArchitecture/Presentation/WineSection/SubCategorySection.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});

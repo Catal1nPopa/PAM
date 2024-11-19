@@ -14,7 +14,6 @@ class Cardfilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get data for the selected category
     List<Map<String, dynamic>> data = dataMap[selectedCategory] ?? [];
 
     if (data.isEmpty) {
@@ -28,7 +27,6 @@ class Cardfilter extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: data.map((item) {
-          // Display only the first unique item for each category
           return InkWell(
             onTap: () => onItemSelected(item[selectedCategory] ?? ''),
             child: Container(
@@ -47,7 +45,7 @@ class Cardfilter extends StatelessWidget {
                       top: Radius.circular(10),
                     ),
                     child: Container(
-                      height: 125,
+                      height: 165,
                       child: Image.network(
                         item['image'] ?? 'https://via.placeholder.com/150',
                         fit: BoxFit.cover,
@@ -55,7 +53,6 @@ class Cardfilter extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Cantitate
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -67,16 +64,15 @@ class Cardfilter extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Type or Country
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       selectedCategory == 'type'
-                          ? 'Type: ${item['type']}'
-                          : 'Country: ${item['country']}',
+                          ? '${item['type']}'
+                          : '${item['country']}',
                       style: const TextStyle(
                         fontSize: 14,
-                        color: Colors.grey,
+                        color: Color.fromARGB(255, 51, 55, 181),
                       ),
                     ),
                   ),
