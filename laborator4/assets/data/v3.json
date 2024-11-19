@@ -28,7 +28,8 @@
       "from": {
         "country": "France 🇫🇷",
         "city": "Bordeaux"
-      }
+      },
+      "cantitate": "611"
     },
     {
       "name": "Cloudy Bay Sauvignon Blanc 2020",
@@ -40,7 +41,8 @@
       "from": {
         "country": "New Zealand 🇳🇿",
         "city": "Marlborough"
-      }
+      },
+      "cantitate": "622"
     },
     {
       "name": "Moet & Chandon Imperial Brut",
@@ -52,7 +54,8 @@
       "from": {
         "country": "France 🇫🇷",
         "city": "Champagne"
-      }
+      },
+      "cantitate": "63"
     },
     {
       "name": "Penfolds Grange 2016",
@@ -64,7 +67,8 @@
       "from": {
         "country": "Australia 🇦🇺",
         "city": "Barossa Valley"
-      }
+      },
+      "cantitate": "12"
     },
     {
       "name": "Gavi di Gavi La Scolca 2019",
@@ -76,7 +80,8 @@
       "from": {
         "country": "Italy 🇮🇹",
         "city": "Piedmont"
-      }
+      },
+      "cantitate": "6"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import '../../Domain/Entities/wines_entity.dart';
-import '../../Domain/Entities/carousel_entity.dart';
+import '../Domain/Entities/wines_entity.dart';
+import '../Domain/Entities/carousel_entity.dart';
 
 class LocalDataSource {
   Future<List<WinesEntity>> fetchWinesBy() async {

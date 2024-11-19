@@ -6,6 +6,7 @@ class CarouselEntity {
   final double priceUsd;
   final String type;
   final Location from;
+  final String cantitate;
 
   CarouselEntity({
     required this.name,
@@ -15,17 +16,20 @@ class CarouselEntity {
     required this.priceUsd,
     required this.type,
     required this.from,
+    required this.cantitate,
   });
 
+  // Factory constructor for creating a CarouselEntity from JSON
   factory CarouselEntity.fromJson(Map<String, dynamic> json) {
     return CarouselEntity(
-      name: json['name'],
-      image: json['image'],
-      criticScore: json['critic_score'],
-      bottleSize: json['bottle_size'],
-      priceUsd: json['price_usd'].toDouble(),
-      type: json['type'],
-      from: Location.fromJson(json['from']),
+      name: json['name'] ?? 'Unnamed Wine', // Provide default values
+      image: json['image'] ?? '',
+      cantitate: json['cantitate'] ?? '',
+      criticScore: json['critic_score'] ?? 0,
+      bottleSize: json['bottle_size'] ?? 'Unknown Size',
+      priceUsd: (json['price_usd'] as num?)?.toDouble() ?? 0.0,
+      type: json['type'] ?? 'Unknown Type',
+      from: Location.fromJson(json['from'] ?? {}),
     );
   }
 }
@@ -36,10 +40,11 @@ class Location {
 
   Location({required this.country, required this.city});
 
+  // Factory constructor for creating a Location from JSON
   factory Location.fromJson(Map<String, dynamic> json) {
     return Location(
-      country: json['country'],
-      city: json['city'],
+      country: json['country'] ?? 'Unknown Country', // Provide default values
+      city: json['city'] ?? 'Unknown City',
     );
   }
 }
